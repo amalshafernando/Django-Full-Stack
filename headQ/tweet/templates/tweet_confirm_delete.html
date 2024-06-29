@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+tweet delete
+{% endblock title %}
+
+{% block content %}
+<h1 class="text-center mt-4">Are you sure that you want to delete the tweet?</h1>
+
+<form action="{% url 'tweet_delete' tweet.id %}" method="post">
+    {% csrf_token %}
+    <!-- Corrected action attribute to point to the 'tweet_delete' URL pattern,
+         passing tweet.id as tweet_id -->
+    
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <!-- Added type="submit" to the Delete button to ensure it triggers form submission -->
+
+    <a class="btn btn-success" href="{% url 'tweet_list' %}">Cancel</a>
+    <!-- Fixed closing tag for the Cancel button link -->
+</form>
+{% endblock %}
